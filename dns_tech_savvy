@@ -1,0 +1,29 @@
+#
+# DNS List - Tech Savvy
+# This list is one I generally permit outbound, but only for those who are tech savvy / unlikely to fall for scams.
+# It contains a list of URL's that I usually like to block for regular users to help prevent them getting scammed.
+# However, these blocks would likely be inconvenient for those who are somewhat tech savvy and who use stuff like remote desktop software.
+# 
+# Disclaimer
+# 
+# The firewall block/allow lists provided here are offered as-is without any warranties or guarantees. These lists are not comprehensive, and their effectiveness in blocking threats or allowing necessary traffic cannot be assured.
+# 
+# By using these lists, you acknowledge that:
+# 	1.	No Security Guarantee – The lists may not prevent all threats, nor are they a substitute for a complete security strategy.
+# 	2.	No Liability – I am not responsible for any security breaches, data loss, downtime, or other issues resulting from the use of these lists.
+# 	3.	User Responsibility – It is your responsibility to review, test, and adjust these lists to fit your specific security needs.
+# 	4.	Changes & Updates – These lists may change over time without notice. You should regularly review and update your configurations accordingly.
+# 
+# If you require guaranteed security, consult a professional network security provider. Use these lists at your own risk.
+# 
+
+# VideoLAN
+# Note - I have no idea why these get blocked in some lists, but I've found they do...
+videolan.org
+www.videolan.org
+get.videolan.org
+
+# AnyDesk URLs
+anydesk.com
+www.anydesk.com
+download.anydesk.com
