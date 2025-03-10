@@ -1,29 +1,15 @@
-NO_IP # #
-NO_IP # # DNS List - Tech Savvy
-NO_IP # # This list is one I generally permit outbound, but only for those who are tech savvy / unlikely to fall for scams.
-NO_IP # # It contains a list of URL's that I usually like to block for regular users to help prevent them getting scammed.
-NO_IP # # However, these blocks would likely be inconvenient for those who are somewhat tech savvy and who use stuff like remote desktop software.
-NO_IP # #
-NO_IP # # Disclaimer
-NO_IP # #
-NO_IP # # The firewall block/allow lists provided here are offered as-is without any warranties or guarantees. These lists are not comprehensive, and their effectiveness in blocking threats or allowing necessary traffic cannot be assured.
-NO_IP # #
-NO_IP # # By using these lists, you acknowledge that:
-NO_IP # #  1.	No Security Guarantee – The lists may not prevent all threats, nor are they a substitute for a complete security strategy.
-NO_IP # #  2.	No Liability – I am not responsible for any security breaches, data loss, downtime, or other issues resulting from the use of these lists.
-NO_IP # #  3.	User Responsibility – It is your responsibility to review, test, and adjust these lists to fit your specific security needs.
-NO_IP # #  4. Changes & Updates – These lists may change over time without notice. You should regularly review and update your configurations accordingly.
-NO_IP # #
-NO_IP # # If you require guaranteed security, consult a professional network security provider. Use these lists at your own risk.
-NO_IP # #
-NO_IP # 
-NO_IP # # VideoLAN
-NO_IP # # Note - I have no idea why these get blocked in some lists, but I've found they do...
+# ⚠️ Auto-Generated File  
+# This file was generated from dns_tech_savvy.  
+# Source: https://github.com/zacaustin/filter-lists/blob/main/dns_tech_savvy  
+#  
+# DISCLAIMER:  
+# These firewall lists are provided as-is without warranties or guarantees.  
+# They are NOT comprehensive, and I take no responsibility for their effectiveness.  
+# Use at your own risk, and review before applying to production systems.  
+
 213.36.253.2 # videolan.org
 213.36.253.2 # www.videolan.org
-195.154.241.219 # get.videolan.org
-NO_IP # 
-NO_IP # # AnyDesk URLs
+62.210.246.226 # get.videolan.org
 3.171.85.117
 3.171.85.123
 3.171.85.71
