@@ -16,11 +16,28 @@ jobs:
 
       - name: Resolve Domains to IPs
         run: |
+          DISCLAIMER="\
+          # ⚠️ Auto-Generated File  
+          # This file was generated from {source_file}.  
+          # Source: https://github.com/${{ github.repository }}/blob/main/{source_file}  
+          #  
+          # DISCLAIMER:  
+          # These firewall lists are provided as-is without warranties or guarantees.  
+          # They are NOT comprehensive, and I take no responsibility for their effectiveness.  
+          # Use at your own risk, and review before applying to production systems.  
+          "  
+
           for file in dns_*; do
             output_file="ipv4_${file#dns_}"
             echo "Processing $file -> $output_file"
-            touch "$output_file"
-            while read -r domain; do
+
+            # Create output file with disclaimer
+            echo "$DISCLAIMER" | sed "s/{source_file}/$file/g" > "$output_file"
+
+            # Read and process the file, ignoring empty lines and comments
+            while IFS= read -r domain; do
+              [[ -z "$domain" || "$domain" =~ ^# ]] && continue  # Skip empty lines and comments
+
               ips=$(dig +short "$domain" | grep -E '^[0-9.]+$' | sort -u)
               if [[ -n "$ips" ]]; then
                 echo "$ips # $domain" >> "$output_file"
@@ -28,17 +45,19 @@ jobs:
                 echo "NO_IP # $domain" >> "$output_file"
               fi
             done < "$file"
-            cat "$output_file"
+
+            cat "$output_file"  # Debug output
           done
 
       - name: Commit & Push Changes
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}  # Use the secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git add ipv4_*
-          git commit -m "Updated resolved IP lists"
+          git commit -m "Updated resolved IP lists" || echo "No changes to commit"
           git push
         continue-on-error: true  # Prevents failure if no changes
+        
