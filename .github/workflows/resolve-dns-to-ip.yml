@@ -33,10 +33,11 @@ jobs:
 
       - name: Commit & Push Changes
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_PAT: ${{ secrets.GH_PAT }}  # Use the secret
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git
           git add ipv4_*
           git commit -m "Updated resolved IP lists"
           git push
