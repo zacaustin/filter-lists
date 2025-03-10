@@ -14,6 +14,9 @@ If you require guaranteed security, consult a professional network security prov
 
 **⚠️ Use these lists at your own risk. ⚠️**
 
+## Notes
+- I've found the GitHub actions resolution of some addresses to be less than perfect. I suspect this could be related to TTL's and variance across cached results between my clients and the servers GitHub are using. Some sites are worse than others. Particularly VideoLAN's servers and mirrors seem to change depending on how the DNS servers feel that second...
+
 ## Lists
 
 |List|Type|Action|Direction|Description|
