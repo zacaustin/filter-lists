@@ -16,7 +16,7 @@ If you require guaranteed security, consult a professional network security prov
 
 ## Lists
 
-|List|Action|Direction|Description|
-|----|------|---------|-----------|
-|dns_tech_savvy|✅|Egress|Includes common sites those tech-savvy use day-to-day, but may present a risk for others. E.g. remote desktop apps.|
-<!--|block|❌|Egress|Block|-->
+|List|Type|Action|Direction|Description|
+|----|----|------|---------|-----------|
+|dns_tech_savvy|DNS|✅|Egress|Includes common sites those tech-savvy use day-to-day, but may present a risk for others. E.g. remote desktop apps.|
+<!--|list_name|IPV4|❌|Egress/Ingress|List Description|-->
