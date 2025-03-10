@@ -1,0 +1,41 @@
+name: Resolve Domains to IPs
+
+on:
+  push:
+    paths:
+      - "dns_*"  # Run when any file starting with dns_ is modified
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  resolve_domains:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Resolve Domains to IPs
+        run: |
+          for file in dns_*; do
+            output_file="ipv4_${file#dns_}"
+            echo "Processing $file -> $output_file"
+            touch "$output_file"
+            while read -r domain; do
+              ips=$(dig +short "$domain" | grep -E '^[0-9.]+$' | sort -u)
+              if [[ -n "$ips" ]]; then
+                echo "$ips # $domain" >> "$output_file"
+              else
+                echo "NO_IP # $domain" >> "$output_file"
+              fi
+            done < "$file"
+            cat "$output_file"
+          done
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add ipv4_*
+          git commit -m "Updated resolved IP lists"
+          git push
+        continue-on-error: true  # Prevents failure if no changes
